@@ -1,0 +1,15 @@
+trainer:
+  log_level: INFO
+  overlay:
+    enabled: true
+    position: [24, 24]
+    opacity: 0.82
+  hotkeys:
+    toggle_menu: "F12"
+    panic_unload: "END"
+  update_check: true
+
+safety:
+  backup_save_on_attach: true
+  max_gold: 999999
+  max_energy: 99
