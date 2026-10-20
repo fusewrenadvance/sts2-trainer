@@ -1,0 +1,31 @@
+[project]
+name = "sts2-trainer"
+version = "0.6.3"
+description = "Slay the Spire 2 Trainer - single-player memory trainer with overlay"
+authors = [{ name = "sts2-trainer contributors", email = "maint@sts2-trainer.dev" }]
+requires-python = ">=3.11"
+license = { text = "MIT" }
+readme = "README.md"
+
+dependencies = [
+    "pymem>=1.9.4",
+    "pywin32>=306",
+    "requests>=2.31.0",
+    "PyYAML>=6.0.1",
+    "rich>=13.7.0",
+    "pydantic>=2.6.0",
+    "keyboard>=0.13.5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "ruff>=0.4", "black>=24.0"]
+
+[project.scripts]
+sts2-trainer = "sts2_trainer.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
