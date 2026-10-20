@@ -1,0 +1,46 @@
+# Signature + static offset table for Slay the Spire 2 (Steam, 2026 builds).
+# Update this file when a patch drops. Values are relative to module base.
+game:
+  process_name: "SlayTheSpire2.exe"
+  module_name: "SlayTheSpire2.exe"
+  supported_builds:
+    - "2026.1.14"
+    - "2026.2.03"
+    - "2026.3.11"
+
+offsets:
+  player_state_ptr:
+    signature: "48 8B 05 ?? ?? ?? ?? 48 85 C0 74 ?? 48 8B 88"
+    static_offset: "0x02F14A80"
+    notes: "root pointer to RunState"
+  energy:
+    chain: ["player_state_ptr", "0x18", "0x40", "0x8"]
+    type: int32
+  gold:
+    chain: ["player_state_ptr", "0x18", "0x48", "0x10"]
+    type: int32
+  hp_current:
+    chain: ["player_state_ptr", "0x18", "0x30"]
+    type: int32
+  hp_max:
+    chain: ["player_state_ptr", "0x18", "0x34"]
+    type: int32
+  deck_ptr:
+    chain: ["player_state_ptr", "0x20"]
+    notes: "vector<CardRef>; use deck_ops for mutation"
+  relics_ptr:
+    chain: ["player_state_ptr", "0x28"]
+
+features:
+  infinite_energy:
+    default_hotkey: "F1"
+    write: { target: energy, value: 3 }
+  gold_multiplier:
+    default_hotkey: "F2"
+    multiplier: 10
+  godmode:
+    default_hotkey: "F3"
+    write: { target: hp_current, value: "=hp_max" }
+  card_duplicator:
+    default_hotkey: "F4"
+    max_dupes: 5
