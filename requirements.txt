@@ -1,0 +1,9 @@
+# sts2-trainer runtime deps (Python 3.11+)
+pymem>=1.9.4
+pywin32>=306
+requests>=2.31.0
+PyYAML>=6.0.1
+rich>=13.7.0
+pydantic>=2.6.0
+keyboard>=0.13.5
+pydivert>=2.1.0
